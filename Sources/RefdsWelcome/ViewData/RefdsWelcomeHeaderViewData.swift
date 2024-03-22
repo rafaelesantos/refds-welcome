@@ -1,13 +1,13 @@
 import SwiftUI
 
 public struct RefdsWelcomeHeaderViewData {
-    public var applicationIcon: Image?
+    public var applicationIcon: (() -> any View)?
     public var introduceTitle: String
     public var applicationTitle: String
     public var description: String?
     
     init(
-        applicationIcon: Image? = nil,
+        applicationIcon: (() -> any View)? = nil,
         introduceTitle: String,
         applicationTitle: String,
         description: String? = nil

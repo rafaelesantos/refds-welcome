@@ -1,4 +1,5 @@
 import SwiftUI
+import RefdsUI
 
 struct RefdsWelcomeFeatureView: View {
     private let viewData: RefdsWelcomeFeatureViewData
@@ -8,18 +9,18 @@ struct RefdsWelcomeFeatureView: View {
     }
     
     var body: some View {
-        HStack(alignment: .top, spacing: 30) {
-            viewData.icon
-                .resizable()
-                .scaledToFit()
-                .frame(width: 45, height: 45)
-            VStack(alignment: .leading) {
-                Text(viewData.title)
-                    .font(.system(.body, weight: .bold))
-                Text(viewData.description)
-                    .font(.system(.body, weight: .light))
+        HStack(alignment: .top, spacing: .padding(.extraLarge)) {
+            if let icon = viewData.icon {
+                AnyView(icon())
+                    .frame(width: 50)
             }
-            Spacer(minLength: 0)
+            
+            VStack(alignment: .leading) {
+                RefdsText(viewData.title, weight: .bold)
+                RefdsText(viewData.description, weight: .light)
+            }
+            
+            Spacer(minLength: .zero)
         }
         .onTapGesture { viewData.action?() }
     }
@@ -27,6 +28,5 @@ struct RefdsWelcomeFeatureView: View {
 
 #Preview {
     RefdsWelcomeFeatureView(viewData: .mock)
-        .padding()
-        .padding()
+        .padding(.padding(.extraLarge))
 }

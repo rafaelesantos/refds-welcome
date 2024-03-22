@@ -1,13 +1,13 @@
 import SwiftUI
 
 public struct RefdsWelcomeFeatureViewData {
-    public var icon: Image
+    public var icon: (() -> any View)?
     public var title: String
     public var description: String
     public var action: (() -> Void)?
     
     public init(
-        icon: Image,
+        icon: (() -> any View)? = nil,
         title: String,
         description: String,
         action: (() -> Void)? = nil

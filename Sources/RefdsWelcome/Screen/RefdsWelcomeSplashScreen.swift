@@ -1,4 +1,5 @@
 import SwiftUI
+import RefdsUI
 
 public struct RefdsWelcomeSplashScreen: View {
     @Environment(\.refdsWelcomeWidth) private var refdsWelcomeWidth
@@ -17,14 +18,13 @@ public struct RefdsWelcomeSplashScreen: View {
             VStack(spacing: 60) {
                 Spacer()
                 RefdsWelcomeHeaderView(viewData: viewData)
-                if isLoading { ProgressView() }
+                if isLoading { RefdsLoadingView() }
                 Spacer()
             }
             Spacer(minLength: .zero)
         }
         .frame(maxWidth: refdsWelcomeWidth)
-        .padding()
-        .padding()
+        .padding(.padding(.extraLarge))
     }
 }
 

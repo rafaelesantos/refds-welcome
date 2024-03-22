@@ -1,4 +1,5 @@
 import SwiftUI
+import RefdsUI
 
 struct RefdsWelcomeHeaderView: View {
     private let viewData: RefdsWelcomeHeaderViewData
@@ -9,33 +10,36 @@ struct RefdsWelcomeHeaderView: View {
     
     var body: some View {
         HStack {
-            VStack(alignment: .leading, spacing: 20) {
+            VStack(alignment: .leading, spacing: .padding(.large)) {
                 VStack(alignment: .leading) {
                     if let applicationIcon = viewData.applicationIcon {
-                        applicationIcon.resizable()
-                            .scaledToFit()
-                            .frame(width: 50, height: 50)
+                        AnyView(applicationIcon())
                     }
-                    Text(viewData.introduceTitle)
-                        .font(.largeTitle)
-                        .fontWeight(.heavy)
-                    Text(viewData.applicationTitle)
-                        .font(.largeTitle)
-                        .fontWeight(.heavy)
-                        .foregroundStyle(Color.accentColor)
+                    
+                    RefdsText(
+                        viewData.introduceTitle,
+                        style: .largeTitle,
+                        weight: .heavy
+                    )
+                    
+                    RefdsText(
+                        viewData.applicationTitle,
+                        style: .largeTitle,
+                        color: .accentColor,
+                        weight: .heavy
+                    )
                 }
                 
                 if let description = viewData.description {
-                    Text(description)
+                    RefdsText(description)
                 }
             }
-            Spacer(minLength: 0)
+            Spacer(minLength: .zero)
         }
     }
 }
 
 #Preview {
     RefdsWelcomeHeaderView(viewData: .mock)
-        .padding()
-        .padding()
+        .padding(.padding(.extraLarge))
 }

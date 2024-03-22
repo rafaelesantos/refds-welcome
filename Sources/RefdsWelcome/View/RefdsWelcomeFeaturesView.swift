@@ -1,10 +1,11 @@
 import SwiftUI
+import RefdsUI
 
 struct RefdsWelcomeFeaturesView: View {
     let viewData: [RefdsWelcomeFeatureViewData]
     
     var body: some View {
-        VStack(spacing: 30) {
+        VStack(spacing: .padding(.extraLarge)) {
             ForEach(viewData.indices, id: \.self) {
                 let viewData = viewData[$0]
                 RefdsWelcomeFeatureView(viewData: viewData)
@@ -20,6 +21,5 @@ struct RefdsWelcomeFeaturesView: View {
         .mock,
         .mock
     ])
-    .padding()
-    .padding()
+    .padding(.padding(.extraLarge))
 }

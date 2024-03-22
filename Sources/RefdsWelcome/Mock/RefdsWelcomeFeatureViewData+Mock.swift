@@ -1,11 +1,13 @@
 import SwiftUI
+import RefdsUI
+import RefdsShared
 
 extension RefdsWelcomeFeatureViewData {
     static var mock: RefdsWelcomeFeatureViewData {
         RefdsWelcomeFeatureViewData(
-            icon: Image(systemName: "ladybug.fill").symbolRenderingMode(.multicolor),
-            title: "Core Feature",
-            description: "Practice with the app and pass the rank test on the first run."
+            icon: { RefdsIcon(.random, color: .random, size: 40, renderingMode: .multicolor) },
+            title: .someWord(),
+            description: .someParagraph()
         )
     }
 }

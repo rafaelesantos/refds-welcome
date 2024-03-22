@@ -1,4 +1,5 @@
 import SwiftUI
+import RefdsUI
 
 public struct RefdsWelcomeScreen: View {
     @Environment(\.refdsWelcomeWidth) private var refdsWelcomeWidth
@@ -19,8 +20,7 @@ public struct RefdsWelcomeScreen: View {
                         .opacity(.zero)
                         .padding(.top, -60)
                 }
-                .padding()
-                .padding()
+                .padding(.padding(.extraLarge))
             }
             .scrollIndicators(.hidden)
             

@@ -1,4 +1,5 @@
 import SwiftUI
+import RefdsUI
 
 struct RefdsWelcomeFooterView: View {
     private let viewData: RefdsWelcomeFooterViewData
@@ -8,25 +9,21 @@ struct RefdsWelcomeFooterView: View {
     }
     
     var body: some View {
-        VStack(spacing: 20) {
+        VStack(spacing: .padding(.large)) {
             if let detail = viewData.detail {
-                Text(detail)
-                    .font(.footnote)
-                    .foregroundStyle(.secondary)
-                    .multilineTextAlignment(.center)
+                RefdsText(
+                    detail,
+                    style: .footnote,
+                    color: .secondary,
+                    alignment: .center
+                )
             }
-            Button { viewData.buttonAction?() } label: {
-                Text(viewData.buttonTitle)
-                    .foregroundStyle(.white)
-                    .bold()
-                    .frame(maxWidth: .infinity)
-                    .frame(height: 50)
-                    .background(Color.accentColor)
-                    .clipShape(.rect(cornerRadius: 15))
+            
+            RefdsButton(viewData.buttonTitle, style: .primary) {
+                viewData.buttonAction?()
             }
         }
-        .padding()
-        .padding()
+        .padding(.padding(.extraLarge))
         .background()
     }
 }
