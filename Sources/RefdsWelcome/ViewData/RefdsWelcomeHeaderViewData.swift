@@ -6,7 +6,7 @@ public struct RefdsWelcomeHeaderViewData {
     public var applicationTitle: String
     public var description: String?
     
-    init(
+    public init(
         applicationIcon: (() -> any View)? = nil,
         introduceTitle: String,
         applicationTitle: String,
