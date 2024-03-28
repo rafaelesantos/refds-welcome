@@ -16,6 +16,7 @@ public struct RefdsWelcomeScreen: View {
                 VStack(spacing: 60) {
                     RefdsWelcomeHeaderView(viewData: viewData.header)
                     RefdsWelcomeFeaturesView(viewData: viewData.features)
+                        .padding(.top, -20)
                     RefdsWelcomeFooterView(viewData: viewData.footer)
                         .opacity(.zero)
                         .padding(.top, -60)
