@@ -2,44 +2,47 @@ import SwiftUI
 import RefdsUI
 
 struct RefdsWelcomeHeaderView: View {
-    private let viewData: RefdsWelcomeHeaderViewData
+    private let viewData: RefdsWelcomeHeaderViewDataProtocol
     
-    init(viewData: RefdsWelcomeHeaderViewData) {
+    init(viewData: RefdsWelcomeHeaderViewDataProtocol) {
         self.viewData = viewData
     }
     
     var body: some View {
-        HStack {
-            VStack(alignment: .leading, spacing: .padding(.large)) {
-                VStack(alignment: .leading) {
-                    if let applicationIcon = viewData.applicationIcon {
-                        AnyView(applicationIcon())
-                    }
-                    
-                    RefdsText(
-                        viewData.introduceTitle,
-                        style: .largeTitle,
-                        weight: .heavy
-                    )
-                    
-                    RefdsText(
-                        viewData.applicationTitle,
-                        style: .largeTitle,
-                        color: .accentColor,
-                        weight: .heavy
-                    )
-                }
-                
-                if let description = viewData.description {
-                    RefdsText(description)
-                }
+        VStack(alignment: .leading, spacing: .padding(.medium)) {
+            if let applicationIcon = viewData.applicationIcon {
+                applicationIcon
+                    .resizable()
+                    .scaledToFit()
+                    .frame(width: 60)
+                    .clipShape(.rect(cornerRadius: .cornerRadius))
             }
-            Spacer(minLength: .zero)
+            
+            VStack(alignment: .leading) {
+                RefdsText(
+                    viewData.introduceTitle,
+                    style: .largeTitle,
+                    weight: .black,
+                    design: .rounded
+                )
+                
+                RefdsText(
+                    viewData.applicationTitle,
+                    style: .largeTitle,
+                    color: .accentColor,
+                    weight: .black,
+                    design: .rounded
+                )
+            }
+            
+            if let description = viewData.description {
+                RefdsText(description, color: .secondary)
+            }
         }
     }
 }
 
 #Preview {
-    RefdsWelcomeHeaderView(viewData: .mock)
-        .padding(.padding(.extraLarge))
+    RefdsWelcomeHeaderView(viewData: RefdsWelcomeHeaderViewDataMock())
+        .padding(.horizontal, .padding(.extraLarge))
 }

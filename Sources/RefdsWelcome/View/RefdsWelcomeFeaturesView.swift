@@ -2,10 +2,10 @@ import SwiftUI
 import RefdsUI
 
 struct RefdsWelcomeFeaturesView: View {
-    let viewData: [RefdsWelcomeFeatureViewData]
+    let viewData: [RefdsWelcomeFeatureViewDataProtocol]
     
     var body: some View {
-        VStack(spacing: .padding(.extraLarge)) {
+        VStack(spacing: .padding(.medium)) {
             ForEach(viewData.indices, id: \.self) {
                 let viewData = viewData[$0]
                 RefdsWelcomeFeatureView(viewData: viewData)
@@ -15,11 +15,8 @@ struct RefdsWelcomeFeaturesView: View {
 }
 
 #Preview {
-    RefdsWelcomeFeaturesView(viewData: [
-        .mock,
-        .mock,
-        .mock,
-        .mock
-    ])
-    .padding(.padding(.extraLarge))
+    ScrollView {
+        RefdsWelcomeFeaturesView(viewData: RefdsWelcomeViewDataMock().features)
+            .padding(.horizontal, .padding(.extraLarge))
+    }
 }

@@ -2,35 +2,34 @@ import SwiftUI
 import RefdsUI
 
 public struct RefdsWelcomeScreen: View {
-    @Environment(\.refdsWelcomeWidth) private var refdsWelcomeWidth
+    private let viewData: any RefdsWelcomeViewDataProtocol
     
-    private let viewData: RefdsWelcomeViewData
-    
-    public init(viewData: RefdsWelcomeViewData) {
+    public init(viewData: any RefdsWelcomeViewDataProtocol) {
         self.viewData = viewData
     }
     
     public var body: some View {
         ZStack(alignment: .bottom) {
             ScrollView {
-                VStack(spacing: 60) {
+                VStack(spacing: 30) {
                     RefdsWelcomeHeaderView(viewData: viewData.header)
+                    
                     RefdsWelcomeFeaturesView(viewData: viewData.features)
-                        .padding(.top, -20)
+                    
                     RefdsWelcomeFooterView(viewData: viewData.footer)
                         .opacity(.zero)
-                        .padding(.top, -60)
+                        .padding(.top, -50)
                 }
-                .padding(.padding(.extraLarge))
+                .padding(.padding(.large))
             }
             .scrollIndicators(.hidden)
             
             RefdsWelcomeFooterView(viewData: viewData.footer)
+                .background()
         }
-        .frame(maxWidth: refdsWelcomeWidth)
     }
 }
 
 #Preview {
-    RefdsWelcomeScreen(viewData: .mock)
+    RefdsWelcomeScreen(viewData: RefdsWelcomeViewDataMock())
 }

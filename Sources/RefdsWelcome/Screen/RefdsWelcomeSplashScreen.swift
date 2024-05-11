@@ -5,9 +5,9 @@ public struct RefdsWelcomeSplashScreen: View {
     @Environment(\.refdsWelcomeWidth) private var refdsWelcomeWidth
     
     private let isLoading: Bool
-    private let viewData: RefdsWelcomeHeaderViewData
+    private let viewData: RefdsWelcomeHeaderViewDataProtocol
     
-    init(isLoading: Bool, viewData: RefdsWelcomeHeaderViewData) {
+    init(isLoading: Bool, viewData: RefdsWelcomeHeaderViewDataProtocol) {
         self.isLoading = isLoading
         self.viewData = viewData
     }
@@ -31,6 +31,6 @@ public struct RefdsWelcomeSplashScreen: View {
 #Preview {
     RefdsWelcomeSplashScreen(
         isLoading: true,
-        viewData: .mock
+        viewData: RefdsWelcomeHeaderViewDataMock()
     )
 }

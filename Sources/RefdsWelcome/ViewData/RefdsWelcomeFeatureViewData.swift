@@ -1,13 +1,21 @@
 import SwiftUI
+import RefdsShared
 
-public struct RefdsWelcomeFeatureViewData {
-    public var icon: (() -> any View)?
+public protocol RefdsWelcomeFeatureViewDataProtocol {
+    var icon: RefdsIconSymbol { get set }
+    var title: String { get set }
+    var description: String { get set }
+    var action: (() -> Void)? { get set }
+}
+
+public struct RefdsWelcomeFeatureViewData: RefdsWelcomeFeatureViewDataProtocol {
+    public var icon: RefdsIconSymbol
     public var title: String
     public var description: String
     public var action: (() -> Void)?
     
     public init(
-        icon: (() -> any View)? = nil,
+        icon: RefdsIconSymbol,
         title: String,
         description: String,
         action: (() -> Void)? = nil

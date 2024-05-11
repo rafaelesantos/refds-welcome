@@ -1,17 +1,23 @@
 import Foundation
 
-public struct RefdsWelcomeViewData: Identifiable {
-    public var id: UUID
-    public var header: RefdsWelcomeHeaderViewData
-    public var features: [RefdsWelcomeFeatureViewData]
-    public var footer: RefdsWelcomeFooterViewData
+public protocol RefdsWelcomeViewDataProtocol: Identifiable {
+    var id: UUID { get }
+    var header: RefdsWelcomeHeaderViewDataProtocol { get set }
+    var features: [RefdsWelcomeFeatureViewDataProtocol] { get set }
+    var footer: RefdsWelcomeFooterViewDataProtocol { get set }
+}
+
+public struct RefdsWelcomeViewData: RefdsWelcomeViewDataProtocol {
+    public var id: UUID { .init() }
+    public var header: RefdsWelcomeHeaderViewDataProtocol
+    public var features: [RefdsWelcomeFeatureViewDataProtocol]
+    public var footer: RefdsWelcomeFooterViewDataProtocol
     
     public init(
-        header: RefdsWelcomeHeaderViewData,
-        features: [RefdsWelcomeFeatureViewData],
-        footer: RefdsWelcomeFooterViewData
+        header: RefdsWelcomeHeaderViewDataProtocol,
+        features: [RefdsWelcomeFeatureViewDataProtocol],
+        footer: RefdsWelcomeFooterViewDataProtocol
     ) {
-        self.id = .init()
         self.header = header
         self.features = features
         self.footer = footer

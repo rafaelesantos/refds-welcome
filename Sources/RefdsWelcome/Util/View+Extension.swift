@@ -3,7 +3,7 @@ import SwiftUI
 extension View {
     public func refdsWelcomeSplash(
         when isLoading: Binding<Bool>,
-        viewData: RefdsWelcomeHeaderViewData
+        viewData: RefdsWelcomeHeaderViewDataProtocol
     ) -> some View {
         self.fullScreenCover(isPresented: isLoading) {
             RefdsWelcomeSplashScreen(
@@ -13,7 +13,7 @@ extension View {
         }
     }
     
-    public func refdsWelcome(item: Binding<RefdsWelcomeViewData?>) -> some View {
+    public func refdsWelcome<T>(item: Binding<T?>) -> some View where T: RefdsWelcomeViewDataProtocol {
         self.fullScreenCover(item: item) { viewData in
             RefdsWelcomeScreen(viewData: viewData)
         }

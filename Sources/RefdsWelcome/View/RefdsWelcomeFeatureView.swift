@@ -2,22 +2,20 @@ import SwiftUI
 import RefdsUI
 
 struct RefdsWelcomeFeatureView: View {
-    private let viewData: RefdsWelcomeFeatureViewData
+    private let viewData: RefdsWelcomeFeatureViewDataProtocol
     
-    init(viewData: RefdsWelcomeFeatureViewData) {
+    init(viewData: RefdsWelcomeFeatureViewDataProtocol) {
         self.viewData = viewData
     }
     
     var body: some View {
-        HStack(alignment: .top, spacing: .padding(.extraLarge)) {
-            if let icon = viewData.icon {
-                AnyView(icon())
-                    .frame(width: 50)
-            }
+        HStack(spacing: .padding(.medium)) {
+            RefdsIcon(viewData.icon, color: .accentColor, size: 30)
+                .frame(width: 60)
             
             VStack(alignment: .leading) {
                 RefdsText(viewData.title, weight: .bold)
-                RefdsText(viewData.description, weight: .light)
+                RefdsText(viewData.description, color: .secondary)
             }
             
             Spacer(minLength: .zero)
@@ -27,6 +25,7 @@ struct RefdsWelcomeFeatureView: View {
 }
 
 #Preview {
-    RefdsWelcomeFeatureView(viewData: .mock)
-        .padding(.padding(.extraLarge))
+    List {
+        RefdsWelcomeFeatureView(viewData: RefdsWelcomeFeatureViewDataMock())
+    }
 }

@@ -2,9 +2,9 @@ import SwiftUI
 
 private struct RefdsWelcomeDemo: View {
     @State private var isLoading = false
-    @State private var viewData: RefdsWelcomeViewData?
+    @State private var viewData: RefdsWelcomeViewDataMock?
     
-    private var headerViewData: RefdsWelcomeHeaderViewData = .mock
+    private var headerViewData: RefdsWelcomeHeaderViewDataProtocol = RefdsWelcomeHeaderViewDataMock()
     
     var body: some View {
         VStack(spacing: 20) {
@@ -28,10 +28,7 @@ private struct RefdsWelcomeDemo: View {
     }
     
     private func testWelcome() {
-        viewData = .mock
-        wait(seconds: 5) {
-            viewData = nil
-        }
+        viewData = RefdsWelcomeViewDataMock()
     }
     
     private func wait(
