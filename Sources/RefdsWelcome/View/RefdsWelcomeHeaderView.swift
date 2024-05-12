@@ -13,7 +13,7 @@ struct RefdsWelcomeHeaderView: View {
             viewData.applicationIcon
                 .resizable()
                 .scaledToFit()
-                .frame(width: 40)
+                .frame(width: 55)
                 .clipShape(.rect(cornerRadius: 15))
             
             VStack(alignment: .leading) {
