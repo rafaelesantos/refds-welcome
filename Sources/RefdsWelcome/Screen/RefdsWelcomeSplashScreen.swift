@@ -7,7 +7,7 @@ public struct RefdsWelcomeSplashScreen: View {
     private let isLoading: Bool
     private let viewData: RefdsWelcomeHeaderViewDataProtocol
     
-    init(isLoading: Bool, viewData: RefdsWelcomeHeaderViewDataProtocol) {
+    public init(isLoading: Bool, viewData: RefdsWelcomeHeaderViewDataProtocol) {
         self.isLoading = isLoading
         self.viewData = viewData
     }
