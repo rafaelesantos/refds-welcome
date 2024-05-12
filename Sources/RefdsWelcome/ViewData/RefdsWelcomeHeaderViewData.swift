@@ -7,7 +7,7 @@ public protocol RefdsWelcomeHeaderViewDataProtocol {
     var description: String? { get set }
 }
 
-public struct RefdsWelcomeHeaderViewData {
+public struct RefdsWelcomeHeaderViewData: RefdsWelcomeHeaderViewDataProtocol {
     public var introduceTitle: String
     public var applicationTitle: String
     public var description: String?
