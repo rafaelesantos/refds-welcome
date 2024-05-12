@@ -10,13 +10,11 @@ struct RefdsWelcomeHeaderView: View {
     
     var body: some View {
         VStack(alignment: .leading, spacing: .padding(.medium)) {
-            if let applicationIcon = viewData.applicationIcon {
-                applicationIcon
-                    .resizable()
-                    .scaledToFit()
-                    .frame(width: 60)
-                    .clipShape(.rect(cornerRadius: .cornerRadius))
-            }
+            viewData.applicationIcon
+                .resizable()
+                .scaledToFit()
+                .frame(width: 60)
+                .clipShape(.rect(cornerRadius: .cornerRadius))
             
             VStack(alignment: .leading) {
                 RefdsText(
