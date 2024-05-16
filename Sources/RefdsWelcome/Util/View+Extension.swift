@@ -5,7 +5,7 @@ extension View {
         when isLoading: Binding<Bool>,
         viewData: RefdsWelcomeHeaderViewDataProtocol
     ) -> some View {
-        self.fullScreenCover(isPresented: isLoading) {
+        self.sheet(isPresented: isLoading) {
             RefdsWelcomeSplashScreen(
                 isLoading: isLoading.wrappedValue,
                 viewData: viewData
@@ -14,7 +14,7 @@ extension View {
     }
     
     public func refdsWelcome<T>(item: Binding<T?>) -> some View where T: RefdsWelcomeViewDataProtocol {
-        self.fullScreenCover(item: item) { viewData in
+        self.sheet(item: item) { viewData in
             RefdsWelcomeScreen(viewData: viewData)
         }
     }
