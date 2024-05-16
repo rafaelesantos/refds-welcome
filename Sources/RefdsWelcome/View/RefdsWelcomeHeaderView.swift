@@ -20,16 +20,14 @@ struct RefdsWelcomeHeaderView: View {
                 RefdsText(
                     viewData.introduceTitle,
                     style: .largeTitle,
-                    weight: .black,
-                    design: .rounded
+                    weight: .black
                 )
                 
                 RefdsText(
                     viewData.applicationTitle,
                     style: .largeTitle,
                     color: .accentColor,
-                    weight: .black,
-                    design: .rounded
+                    weight: .black
                 )
             }
             
