@@ -24,7 +24,7 @@ public struct RefdsWelcomeSplashScreen: View {
             Spacer(minLength: .zero)
         }
         .frame(maxWidth: refdsWelcomeWidth)
-        .padding(.padding(.extraLarge))
+        .padding(.extraLarge)
     }
 }
 

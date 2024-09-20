@@ -9,7 +9,7 @@ struct RefdsWelcomeFooterView: View {
     }
     
     var body: some View {
-        VStack(spacing: .padding(.large)) {
+        VStack(spacing: .large) {
             if let detail = viewData.detail {
                 RefdsText(
                     detail,
@@ -23,7 +23,7 @@ struct RefdsWelcomeFooterView: View {
                 viewData.action?()
             }
         }
-        .padding(.padding(.extraLarge))
+        .padding(.extraLarge)
     }
 }
 

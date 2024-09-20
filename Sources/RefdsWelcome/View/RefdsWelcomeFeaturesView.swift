@@ -5,7 +5,7 @@ struct RefdsWelcomeFeaturesView: View {
     let viewData: [RefdsWelcomeFeatureViewDataProtocol]
     
     var body: some View {
-        VStack(spacing: .padding(.medium)) {
+        VStack(spacing: .medium) {
             ForEach(viewData.indices, id: \.self) {
                 let viewData = viewData[$0]
                 RefdsWelcomeFeatureView(viewData: viewData)
@@ -17,6 +17,6 @@ struct RefdsWelcomeFeaturesView: View {
 #Preview {
     ScrollView {
         RefdsWelcomeFeaturesView(viewData: RefdsWelcomeViewDataMock().features)
-            .padding(.horizontal, .padding(.extraLarge))
+            .padding(.horizontal, .extraLarge)
     }
 }

@@ -20,7 +20,7 @@ public struct RefdsWelcomeScreen: View {
                         .opacity(.zero)
                         .padding(.top, -50)
                 }
-                .padding(.padding(.large))
+                .padding(.large)
             }
             .scrollIndicators(.hidden)
             
