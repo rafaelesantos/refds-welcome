@@ -14,7 +14,7 @@ struct RefdsWelcomeHeaderView: View {
                 .resizable()
                 .scaledToFit()
                 .frame(width: 55)
-                .clipShape(.rect(cornerRadius: 9.614))
+                .clipShape(.rect(cornerRadius: 55 * 0.216))
             
             VStack(alignment: .leading) {
                 RefdsText(
