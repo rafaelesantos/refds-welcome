@@ -9,7 +9,7 @@ struct RefdsWelcomeFeatureView: View {
     }
     
     var body: some View {
-        HStack(spacing: .medium) {
+        HStack(spacing: .large) {
             RefdsIcon(viewData.icon, color: .accentColor, size: 30)
                 .frame(width: 60)
             

@@ -1,13 +1,13 @@
 import Foundation
 
-public protocol RefdsWelcomeViewDataProtocol: Identifiable {
+public protocol RefdsWelcomeViewDataProtocol {
     var id: UUID { get }
     var header: RefdsWelcomeHeaderViewDataProtocol { get set }
     var features: [RefdsWelcomeFeatureViewDataProtocol] { get set }
     var footer: RefdsWelcomeFooterViewDataProtocol { get set }
 }
 
-public struct RefdsWelcomeViewData: RefdsWelcomeViewDataProtocol {
+public struct RefdsWelcomeViewData: RefdsWelcomeViewDataProtocol, Identifiable {
     public var id: UUID { .init() }
     public var header: RefdsWelcomeHeaderViewDataProtocol
     public var features: [RefdsWelcomeFeatureViewDataProtocol]

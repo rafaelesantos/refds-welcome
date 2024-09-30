@@ -9,7 +9,7 @@ struct RefdsWelcomeHeaderView: View {
     }
     
     var body: some View {
-        VStack(alignment: .leading, spacing: .medium) {
+        VStack(alignment: .leading, spacing: .small) {
             viewData.applicationIcon
                 .resizable()
                 .scaledToFit()

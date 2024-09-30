@@ -13,7 +13,7 @@ extension View {
         }
     }
     
-    public func refdsWelcome<T>(item: Binding<T?>) -> some View where T: RefdsWelcomeViewDataProtocol {
+    public func refdsWelcome<T>(item: Binding<T?>) -> some View where T: RefdsWelcomeViewDataProtocol & Identifiable {
         self.sheet(item: item) { viewData in
             RefdsWelcomeScreen(viewData: viewData)
         }
