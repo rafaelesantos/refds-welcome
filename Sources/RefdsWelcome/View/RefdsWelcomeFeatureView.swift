@@ -3,29 +3,37 @@ import RefdsUI
 
 struct RefdsWelcomeFeatureView: View {
     private let viewData: RefdsWelcomeFeatureViewDataProtocol
+    private let action: ((RefdsWelcomeActionType) -> Void)?
     
-    init(viewData: RefdsWelcomeFeatureViewDataProtocol) {
+    init(
+        viewData: RefdsWelcomeFeatureViewDataProtocol,
+        action: ((RefdsWelcomeActionType) -> Void)?
+    ) {
         self.viewData = viewData
+        self.action = action
     }
     
     var body: some View {
-        HStack(spacing: .large) {
-            RefdsIcon(viewData.icon, color: .accentColor, size: 30)
-                .frame(width: 60)
-            
-            VStack(alignment: .leading) {
-                RefdsText(viewData.title, weight: .bold)
-                RefdsText(viewData.description, color: .secondary)
+        RefdsButton {
+            action?(.feature(viewData))
+        } label: {
+            HStack(spacing: .large) {
+                RefdsIcon(viewData.icon, color: .accentColor, size: 30)
+                    .frame(width: 60)
+                
+                VStack(alignment: .leading) {
+                    RefdsText(viewData.title, weight: .bold)
+                    RefdsText(viewData.description, color: .secondary)
+                }
+                
+                Spacer(minLength: .zero)
             }
-            
-            Spacer(minLength: .zero)
         }
-        .onTapGesture { viewData.action?() }
     }
 }
 
 #Preview {
     List {
-        RefdsWelcomeFeatureView(viewData: RefdsWelcomeFeatureViewDataMock())
+        RefdsWelcomeFeatureView(viewData: RefdsWelcomeFeatureViewDataMock()) { _ in }
     }
 }

@@ -2,11 +2,8 @@ import SwiftUI
 import RefdsUI
 
 struct RefdsWelcomeFooterView: View {
-    private let viewData: RefdsWelcomeFooterViewDataProtocol
-    
-    init(viewData: RefdsWelcomeFooterViewDataProtocol) {
-        self.viewData = viewData
-    }
+    let viewData: RefdsWelcomeFooterViewDataProtocol
+    let action: (RefdsWelcomeActionType) -> Void
     
     var body: some View {
         VStack(spacing: .large) {
@@ -20,7 +17,7 @@ struct RefdsWelcomeFooterView: View {
             }
             
             RefdsButton(viewData.buttonTitle, style: .primary) {
-                viewData.action?()
+                action(.done)
             }
         }
         .padding(.extraLarge)
@@ -28,5 +25,5 @@ struct RefdsWelcomeFooterView: View {
 }
 
 #Preview {
-    RefdsWelcomeFooterView(viewData: RefdsWelcomeFooterViewDataMock())
+    RefdsWelcomeFooterView(viewData: RefdsWelcomeFooterViewDataMock()) { _ in }
 }

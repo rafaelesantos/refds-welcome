@@ -5,6 +5,11 @@ private struct RefdsWelcomeDemo: View {
     @State private var viewData: RefdsWelcomeViewDataMock?
     
     private var headerViewData: RefdsWelcomeHeaderViewDataProtocol = RefdsWelcomeHeaderViewDataMock()
+    private let action: (RefdsWelcomeActionType) -> Void
+    
+    init(action: @escaping (RefdsWelcomeActionType) -> Void) {
+        self.action = action
+    }
     
     var body: some View {
         VStack(spacing: 20) {
@@ -17,7 +22,7 @@ private struct RefdsWelcomeDemo: View {
             }
         }
         .refdsWelcomeSplash(when: $isLoading, viewData: headerViewData)
-        .refdsWelcome(item: $viewData)
+        .refdsWelcome(item: $viewData, action: action)
     }
     
     private func testSplash() {
@@ -54,5 +59,5 @@ private enum RefdsWelcomeDemoFeature {
 }
 
 #Preview {
-    RefdsWelcomeDemo()
+    RefdsWelcomeDemo { _ in }
 }

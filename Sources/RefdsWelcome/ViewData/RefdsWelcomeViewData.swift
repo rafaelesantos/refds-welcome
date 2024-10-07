@@ -1,6 +1,6 @@
 import Foundation
 
-public protocol RefdsWelcomeViewDataProtocol {
+public protocol RefdsWelcomeViewDataProtocol: Sendable {
     var id: UUID { get }
     var header: RefdsWelcomeHeaderViewDataProtocol { get set }
     var features: [RefdsWelcomeFeatureViewDataProtocol] { get set }

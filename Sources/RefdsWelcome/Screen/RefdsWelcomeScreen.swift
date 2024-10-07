@@ -3,9 +3,14 @@ import RefdsUI
 
 public struct RefdsWelcomeScreen: View {
     private let viewData: RefdsWelcomeViewDataProtocol?
+    private let action: ((RefdsWelcomeActionType) -> Void)
     
-    public init(viewData: RefdsWelcomeViewDataProtocol?) {
+    init(
+        viewData: RefdsWelcomeViewDataProtocol?,
+        action: (@escaping (RefdsWelcomeActionType) -> Void)
+    ) {
         self.viewData = viewData
+        self.action = action
     }
     
     @ViewBuilder
@@ -15,22 +20,32 @@ public struct RefdsWelcomeScreen: View {
                 VStack(spacing: 30) {
                     RefdsWelcomeHeaderView(viewData: viewData.header)
                     ScrollView {
-                        RefdsWelcomeFeaturesView(viewData: viewData.features)
-                        RefdsWelcomeFooterView(viewData: viewData.footer)
-                            .opacity(.zero)
-                            .padding(.top, -50)
+                        RefdsWelcomeFeaturesView(
+                            viewData: viewData.features,
+                            action: action
+                        )
+                        
+                        RefdsWelcomeFooterView(
+                            viewData: viewData.footer,
+                            action: action
+                        )
+                        .opacity(.zero)
+                        .padding(.top, -50)
                     }
                     .scrollIndicators(.hidden)
                 }
                 .padding(.large)
                 
-                RefdsWelcomeFooterView(viewData: viewData.footer)
-                    .background()
+                RefdsWelcomeFooterView(
+                    viewData: viewData.footer,
+                    action: action
+                )
+                .background()
             }
         }
     }
 }
 
 #Preview {
-    RefdsWelcomeScreen(viewData: RefdsWelcomeViewDataMock())
+    RefdsWelcomeScreen(viewData: RefdsWelcomeViewDataMock()) { _ in }
 }

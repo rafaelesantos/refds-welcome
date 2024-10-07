@@ -6,7 +6,7 @@ public struct RefdsWelcomeFeatureViewDataMock: RefdsWelcomeFeatureViewDataProtoc
     public var icon: RefdsIconSymbol = .random
     public var title: String = .someWord()
     public var description: String = .someParagraph()
-    public var action: (() -> Void)?
+    public var action: (@Sendable () async -> Void)?
     
     public init() {}
 }

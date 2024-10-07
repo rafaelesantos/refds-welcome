@@ -1,6 +1,6 @@
 import SwiftUI
 
-public protocol RefdsWelcomeHeaderViewDataProtocol {
+public protocol RefdsWelcomeHeaderViewDataProtocol: Sendable {
     var applicationIcon: Image { get set }
     var introduceTitle: String { get set }
     var applicationTitle: String { get set }
